@@ -1,0 +1,51 @@
+{
+    "name": "api",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "scripts": {
+        "start": "nodemon app.js",
+        "dev": "nodemon --exec babel-node app.js",
+        "lint": "eslint .",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "engines": {
+        "node": "12.13.1"
+    },
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "body-parser": "^1.20.1",
+        "cors": "^2.8.5",
+        "dotenv": "^16.0.3",
+        "express": "^4.18.2",
+        "jsonwebtoken": "^9.0.0",
+        "mongodb": "^5.0.1",
+        "mongoose": "^6.9.1",
+        "node-fetch": "^2.6.9",
+        "nodemon": "^2.0.20",
+        "swagger-jsdoc": "^6.2.8",
+        "validatorjs": "^3.22.1"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.20.12",
+        "@babel/node": "^7.20.7",
+        "@babel/plugin-transform-runtime": "^7.19.6",
+        "@babel/preset-env": "^7.20.2",
+        "eslint": "^8.34.0",
+        "eslint-config-airbnb-base": "^15.0.0",
+        "eslint-plugin-import": "^2.27.5"
+    },
+    "nodemonConfig": {
+        "restartable": "rs",
+        "ignore": [
+            "node_modules/**/node_modules"
+        ],
+        "delay": "2500",
+        "env": {
+            "NODE_ENV": "development",
+            "PORT": 4000
+        }
+    }
+}

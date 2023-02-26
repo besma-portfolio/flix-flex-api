@@ -1,0 +1,4 @@
+node_modules/**/*
+public/serviceImages/*
+public/publications/*
+.env
