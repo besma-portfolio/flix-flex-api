@@ -47,7 +47,8 @@ app.use(bodyParser.json());
 app.use('/api-docs', express.static('public/api-docs'));
 const corsOptions = {
   origin: (origin, callback) => {
-    if (['http://localhost:3000', 'https://flix-flex.web.app'].indexOf(origin) !== -1 || !origin) {
+    console.log(origin);
+    if (['http://localhost:3001', 'http://localhost:3000', 'http://172.28.32.1:3000', 'https://flix-flex.web.app'].indexOf(origin) !== -1 || !origin) {
       callback(null, true)
     } else {
       callback(new Error('Not allowed by CORS'))
