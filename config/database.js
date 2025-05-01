@@ -7,6 +7,7 @@ const options = {
   //useCreateIndex: true
 }
 
+console.log(config)
 const database = mongoose
   .connect(
     config.database.host,
