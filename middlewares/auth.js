@@ -10,8 +10,8 @@ function verifyToken(req, res, next) {
     return
   }
 
+
   const data = jwt.verifyToken(token)
-  // console.log(data)
   if (!data) {
     return res.status(401).json({
       message: "Failed to authenticate token."
