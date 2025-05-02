@@ -1,6 +1,5 @@
-import config from "dotenv"
-
-config.config()
+import dotenv from "dotenv";
+dotenv.config();
 
 export default {
   app: {
