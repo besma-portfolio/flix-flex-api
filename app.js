@@ -47,6 +47,7 @@ app.use(bodyParser.json());
 app.use('/api-docs', express.static('public/api-docs'));
 const corsOptions = {
   origin: (origin, callback) => {
+    console.log(origin);
     if (['http://localhost:3001', 'http://localhost:3000', 'http://172.28.32.1:3000', 'https://flix-flex.web.app', 'https://flex-flex-web-app.vercel.app'].indexOf(origin) !== -1 || !origin) {
       callback(null, true)
     } else {
@@ -57,7 +58,7 @@ const corsOptions = {
   optionsSuccessStatus: 200
 };
 
-//app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 apiRoutes(app)
 app.use(errorHandler);
 
