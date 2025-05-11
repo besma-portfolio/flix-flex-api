@@ -1,6 +1,12 @@
 import { Controller, Get, Param, Query } from '@nestjs/common';
 import { MoviesService } from './movies.service';
-import { ApiBearerAuth, ApiParam, ApiQuery, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiOperation,
+  ApiParam,
+  ApiQuery,
+  ApiTags,
+} from '@nestjs/swagger';
 import { SearchDto } from 'src/tv-shows/dto/search.dto';
 
 @Controller('movies')
@@ -10,6 +16,10 @@ export class MoviesController {
   constructor(private moviesService: MoviesService) { }
 
   @Get('popular')
+  @ApiOperation({
+    summary: 'Get popular movies',
+    description: 'Fetches paginated list of popular movies',
+  })
   @ApiQuery({
     name: 'page',
     required: true,
@@ -21,6 +31,10 @@ export class MoviesController {
   }
 
   @Get('upcoming')
+  @ApiOperation({
+    summary: 'Get upcoming movies',
+    description: 'Fetches paginated list of upcoming movies',
+  })
   @ApiQuery({
     name: 'page',
     required: true,
@@ -32,6 +46,10 @@ export class MoviesController {
   }
 
   @Get('search')
+  @ApiOperation({
+    summary: 'Search movies',
+    description: 'Fetches paginated list of movies based on search query',
+  })
   @ApiQuery({
     name: 'Page and search query',
     required: true,
@@ -44,6 +62,10 @@ export class MoviesController {
   }
 
   @Get(':id')
+  @ApiOperation({
+    summary: 'Get movie details',
+    description: 'Fetches details of a specific movie by ID',
+  })
   @ApiParam({
     name: 'id',
     required: true,

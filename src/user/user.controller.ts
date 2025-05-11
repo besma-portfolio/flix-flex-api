@@ -12,6 +12,7 @@ export class UserController {
   @Post('register')
   @ApiOperation({
     summary: 'Register a new user',
+    description: 'Creates a new user account with the provided details',
   })
   @ApiBody({
     description: 'Registration data',
@@ -27,6 +28,7 @@ export class UserController {
   @ApiBearerAuth()
   @ApiOperation({
     summary: 'Get current user',
+    description: 'Fetches the details of the currently authenticated user',
   })
   me(@Request() { user: { id } }: { user: { id: string } }) {
     return this.userService.findOne({ _id: id });

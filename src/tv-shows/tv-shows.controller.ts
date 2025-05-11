@@ -1,5 +1,11 @@
 import { Controller, Get, Param, Query } from '@nestjs/common';
-import { ApiBearerAuth, ApiParam, ApiQuery, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiOperation,
+  ApiParam,
+  ApiQuery,
+  ApiTags,
+} from '@nestjs/swagger';
 import { TvShowsService } from './tv-shows.service';
 import { SearchDto } from './dto/search.dto';
 
@@ -10,6 +16,10 @@ export class TvShowsController {
   constructor(private tvShowsService: TvShowsService) { }
 
   @Get('popular')
+  @ApiOperation({
+    summary: 'Get popular TV shows',
+    description: 'Fetches paginated list of popular TV shows',
+  })
   @ApiQuery({
     name: 'page',
     required: true,
@@ -21,6 +31,10 @@ export class TvShowsController {
   }
 
   @Get('top-rated')
+  @ApiOperation({
+    summary: 'Get top-rated TV shows',
+    description: 'Fetches paginated list of top-rated TV shows',
+  })
   @ApiQuery({
     name: 'page',
     required: true,
@@ -32,6 +46,10 @@ export class TvShowsController {
   }
 
   @Get('search')
+  @ApiOperation({
+    summary: 'Search TV shows',
+    description: 'Fetches paginated list of TV shows based on search query',
+  })
   @ApiQuery({
     name: 'Page and search query',
     required: true,
@@ -44,6 +62,10 @@ export class TvShowsController {
   }
 
   @Get(':id')
+  @ApiOperation({
+    summary: 'Get TV show details',
+    description: 'Fetches details of a specific TV show by ID',
+  })
   @ApiParam({
     name: 'id',
     required: true,

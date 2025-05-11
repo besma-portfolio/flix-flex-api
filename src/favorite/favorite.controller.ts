@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Post, Request } from '@nestjs/common';
+import { Body, Controller, Get, Post, Request } from '@nestjs/common';
 import { FavoriteService } from './favorite.service';
 import { AddFavoriteDto } from './dto/add-favorite.dto';
 import { RemoveFavoriteDto } from './dto/remove-favorite.dto';
@@ -12,7 +12,9 @@ export class FavoriteController {
 
   @Get()
   @ApiOperation({
-    description: 'Get all favorite movies and tv shows',
+    summary: 'Get all favorite movies and tv shows',
+    description:
+      'Fetches all favorite movies and tv shows for the authenticated user',
   })
   getFavorites(@Request() { user }: { user: { id: string } }) {
     return this.favoriteService.getFavorites(user.id);
@@ -20,7 +22,9 @@ export class FavoriteController {
 
   @Post('add')
   @ApiOperation({
-    description: 'Add a favorite movie or tv show',
+    summary: 'Add a favorite movie or tv show',
+    description:
+      "Adds a movie or tv show to the authenticated user's favorites",
   })
   @ApiBody({
     description: 'Favorite data to add',
@@ -41,7 +45,9 @@ export class FavoriteController {
     required: true,
   })
   @ApiOperation({
-    description: 'Remove a favorite movie or tv show',
+    summary: 'Remove a favorite movie or tv show',
+    description:
+      "Removes a movie or tv show from the authenticated user's favorites",
   })
   removeFavorite(
     @Request() { user }: { user: { id: string } },
