@@ -3,6 +3,7 @@ import { ConfigService } from '@nestjs/config';
 import axios from 'axios';
 import { CustomHttpException } from 'src/utils/exceptions/custom.exception';
 import { EXCEPTIONS } from 'src/utils/exceptions/exceptions';
+import { throwIfCustomHttpException } from 'src/utils/exceptions/throw-if-custom.exception';
 
 @Injectable()
 export class MoviesService {
@@ -66,10 +67,20 @@ export class MoviesService {
         },
       });
       if (response.status !== 200) {
-        return null;
+        throw new CustomHttpException(
+          EXCEPTIONS.NOT_FOUND,
+          'Movie not found',
+        );
       }
       return response.data;
     } catch (error) {
+      throwIfCustomHttpException(error);
+      if (error.response?.status === 404) {
+        throw new CustomHttpException(
+          EXCEPTIONS.NOT_FOUND,
+          'Movie not found',
+        );
+      }
       this.logger.error('failed to get movie details', error);
       throw new CustomHttpException(
         EXCEPTIONS.SERVER_ERROR,
