@@ -17,7 +17,7 @@ Flix Flex is a RESTful API built with [NestJS](https://nestjs.com/) designed to 
 
 ## 🧩 Related Project
 
-👉 The [Nextjs App Flix Flex](https://github.com/BesmaSmile/flex-flex-web-app)  connects to this API 
+👉 The [Nextjs App Flix Flex](https://github.com/BesmaSmile/flix-flex-web-app)  connects to this API 
 
 ---
 ## 🔗 API Documentation
