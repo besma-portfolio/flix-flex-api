@@ -30,6 +30,11 @@ export const EXCEPTIONS = {
     message: 'this username has already been used',
     errorCode: 'EXISTING_USERNAME',
   },
+  INVALID_CREDENTIALS: <Exception>{
+    statusCode: HttpStatus.BAD_REQUEST,
+    message: 'Invalid credentials',
+    errorCode: 'INVALID_CREDENTIALS',
+  },
   SERVER_ERROR: <Exception>{
     statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
     message: 'Something went wrong. Please try again',

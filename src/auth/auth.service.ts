@@ -31,14 +31,14 @@ export class AuthService {
     const user = await this.userService.findOne({ username });
     if (!user) {
       throw new CustomHttpException(
-        EXCEPTIONS.BAD_REQUEST,
+        EXCEPTIONS.INVALID_CREDENTIALS,
         'Wrong username or password',
       );
     }
     const passwordMatches = await compare(password, user?.password ?? '');
     if (!passwordMatches) {
       throw new CustomHttpException(
-        EXCEPTIONS.BAD_REQUEST,
+        EXCEPTIONS.INVALID_CREDENTIALS,
         'Wrong username or password',
       );
     }
